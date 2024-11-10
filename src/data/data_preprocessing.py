@@ -93,14 +93,25 @@ def load_data(data_path):
         logger.error("Failed to load data due to: %s", e)
         raise
 
+import os
+
 def save_data(df_merged, data_path):
     try:
-        logger.debug(f"Saving data to: {os.path.join(data_path,'cleaned_data.csv')}")
+        # Ensure the directory exists
+        if not os.path.exists(data_path):
+            os.makedirs(data_path)
+        
+        # Log the saving action
+        logger.debug(f"Saving data to: {os.path.join(data_path, 'cleaned_data.csv')}")
+        
+        # Save the cleaned data
         df_merged.to_csv(os.path.join(data_path, 'cleaned_data.csv'), index=False)
+        
         logger.debug("Data saved successfully")
     except Exception as e:
         logger.error('Unexpected error during save: %s', e)
         raise
+
 
 def main():
     try:

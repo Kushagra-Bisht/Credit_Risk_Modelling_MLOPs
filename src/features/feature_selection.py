@@ -59,13 +59,25 @@ def load_params(params_path):
         logger.error('Unexpected error:',e)
         raise
 
-def save_data(train_data,test_data,data_path):
+import os
+
+def save_data(train_data, test_data, data_path):
     try:
-        train_data.to_csv(os.path.join(data_path,'train.csv'),index=False)
-        test_data.to_csv(os.path.join(data_path,'test.csv'),index=False)
+        # Ensure the directory exists
+        if not os.path.exists(data_path):
+            os.makedirs(data_path)
+        
+        # Log and save train data
+        logger.debug(f"Saving train data to: {os.path.join(data_path, 'train.csv')}")
+        train_data.to_csv(os.path.join(data_path, 'train.csv'), index=False)
+
+        # Log and save test data
+        logger.debug(f"Saving test data to: {os.path.join(data_path, 'test.csv')}")
+        test_data.to_csv(os.path.join(data_path, 'test.csv'), index=False)
+        
         logger.debug("Train and test data saved successfully")
     except Exception as e:
-        logger.error('Unexpected error:',e)
+        logger.error('Unexpected error during save:', e)
         raise
 
 def main():

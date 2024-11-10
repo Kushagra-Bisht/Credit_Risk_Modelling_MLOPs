@@ -72,7 +72,7 @@ def build_pipeline(X_train, y_train):
         logger.debug("Model built and trained successfully.")
 
         # Create model folder if it doesn't exist
-        model_folder = 'model'
+        model_folder = 'models'
         if not os.path.exists(model_folder):
             os.makedirs(model_folder)
             logger.debug(f"Created folder: {model_folder}")
