@@ -71,7 +71,7 @@ def save_model_info(run_id, model_name, file_path):
     # Prepare the data to save
     model_info = {
         "run_id": run_id,
-        "model_name": model_name,
+        "model_path": model_name,
         # Add any other relevant information you want to save
     }
 
