@@ -58,16 +58,31 @@ def load_model():
         logger.error("Error in loading the model: %s", e)
         raise
 
-def save_model_info(run_id: str, model_path: str, file_path: str) -> None:
-    """Save the model run ID and path to a JSON file."""
+import os
+import json
+
+def save_model_info(run_id, model_name, file_path):
+    # Ensure the directory exists
+    directory = os.path.dirname(file_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+        print(f"Created directory: {directory}")
+    
+    # Prepare the data to save
+    model_info = {
+        "run_id": run_id,
+        "model_name": model_name,
+        # Add any other relevant information you want to save
+    }
+
     try:
-        model_info = {'run_id': run_id, 'model_path': model_path}
+        # Write the model information to the file
         with open(file_path, 'w') as file:
             json.dump(model_info, file, indent=4)
-        logger.debug('Model info saved to %s', file_path)
+        print(f"Model information saved to {file_path}")
     except Exception as e:
-        logger.error('Error occurred while saving the model info: %s', e)
-        raise
+        print(f"Failed to save model information: {e}")
+
 
 def evaluate_model(model, X_test, y_test):
     try:
