@@ -26,9 +26,6 @@ jobs:
         run: |
           pip install -r requirements.txt
       
-      - name: Checkout DVC files
-        run: |
-          dvc checkout
 
       - name: run pipeline
         env:
