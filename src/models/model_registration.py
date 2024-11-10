@@ -12,7 +12,7 @@ if not dagshub_token:
 os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
 os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-mlflow.set_tracking_uri('https://dagshub.com/Kushagra-Bisht/Smartphone_portfolio_project.mlflow')
+mlflow.set_tracking_uri('https://dagshub.com/Kushagra-Bisht/Credit_Risk_Modelling_MLOPs.mlflow')
 
 
 # logging configuration
