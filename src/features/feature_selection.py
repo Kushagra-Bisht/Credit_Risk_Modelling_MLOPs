@@ -83,7 +83,7 @@ def save_data(train_data, test_data, data_path):
 def main():
     try:
         logger.debug("Feature  Engineering Started.")
-        df_merged = pd.read_csv("C:/Users/LCM/Desktop/Credit_Risk_Modelling/data/processed/cleaned_data.csv")
+        df_merged = pd.read_csv("data/processed/cleaned_data.csv")
         logger.debug('Data loaded properly')
         
         selected_features=['max_recent_level_of_deliq', 'num_std_12mts', 'time_since_recent_payment', 'enq_L3m', 'PL_enq_L12m', 'pct_of_active_TLs_ever', 'pct_PL_enq_L6m_of_ever', 'Time_With_Curr_Empr', 'pct_currentBal_all_TL', 'time_since_recent_enq', 'recent_level_of_deliq', 'last_prod_enq2',"Approved_Flag"]
