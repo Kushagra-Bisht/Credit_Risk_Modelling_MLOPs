@@ -16,7 +16,7 @@ def promote_model():
 
     # Initialize Mlflow client
     client = mlflow.MlflowClient()
-    model_name = "my_model"
+    model_name = "model"
 
     try:
         # Get the latest version in staging
