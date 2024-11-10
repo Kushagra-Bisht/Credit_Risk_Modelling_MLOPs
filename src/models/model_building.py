@@ -33,7 +33,7 @@ def load_and_split_data():
     # Your data loading and splitting logic
     logger.debug("Loading and splitting data.")
     # Example: Load dataset (replace with your actual data loading code)
-    train = pd.read_csv("C:/Users/LCM/Desktop/Credit_Risk_Modelling/data/interim/train.csv")
+    train = pd.read_csv("data/interim/train.csv")
     X_train = train.drop(columns=['Approved_Flag'])
     y_train = train['Approved_Flag']
     return X_train, y_train

@@ -37,7 +37,7 @@ logger.addHandler(file_handler)
 def load_data_for_evaluation():
     try:
         logger.debug("Starting the data loading process for evaluation.")
-        test = pd.read_csv("C:/Users/LCM/Desktop/Credit_Risk_Modelling/data/interim/test.csv")
+        test = pd.read_csv("data/interim/test.csv")
         X_test = test.drop(columns=['Approved_Flag'])
         y_test = test['Approved_Flag']
         logger.debug('Test data loaded successfully.')
