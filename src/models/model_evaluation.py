@@ -10,8 +10,14 @@ from mlflow.models.signature import infer_signature
 import json
 
 # Initialize DAGsHub and MLflow
-dagshub.init(repo_owner='Kushagra-Bisht', repo_name='Credit_Risk_Modelling_MLOPs', mlflow=True)
-mlflow.set_tracking_uri("https://dagshub.com/Kushagra-Bisht/Credit_Risk_Modelling_MLOPs.mlflow")
+dagshub_token = "10a7c2f7d30e69f138e738ca411a1fbd78583d48"
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_PAT environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+mlflow.set_tracking_uri('https://dagshub.com/Kushagra-Bisht/Smartphone_portfolio_project.mlflow')
 
 # Create a logger
 logger = logging.getLogger("model_evaluation")
