@@ -51,7 +51,7 @@ def build_pipeline(X_train, y_train):
         numeric_transformer = Pipeline(steps=[('Scaling', StandardScaler())])
 
         # Apply transformations to both numeric and categorical features
-        column_transformer = ColumnTransformer(transformers=[
+        column_transformer = ColumnTransformer(transformers=[ 
             ('num', numeric_transformer, num),
             ('cat', categorical_transformer, cat)
         ], remainder='passthrough')
@@ -77,15 +77,20 @@ def build_pipeline(X_train, y_train):
             os.makedirs(model_folder)
             logger.debug(f"Created folder: {model_folder}")
 
-        # Define the file path for saving the model
+        # Define the file path for saving the model and label encoder
         model_filepath = os.path.join(model_folder, 'model.pkl')
+        label_encoder_filepath = os.path.join(model_folder, 'label_encoder.pkl')
 
         # Save the model using pickle
         with open(model_filepath, 'wb') as model_file:
             pickle.dump(model_pipeline, model_file)
-        
-        logger.debug(f"Model built and saved successfully at {model_filepath}.")
-        return model_pipeline
+
+        # Save the label encoder using pickle
+        with open(label_encoder_filepath, 'wb') as le_file:
+            pickle.dump(label_encoder, le_file)
+
+        logger.debug(f"Model and label encoder saved successfully at {model_filepath} and {label_encoder_filepath}.")
+        return model_pipeline, label_encoder
 
     except Exception as e:
         logger.error("Error in building model: %s", e)
@@ -95,7 +100,7 @@ def main():
     # Load and split data
     X_train, y_train = load_and_split_data()
 
-    # Build and save the model
+    # Build and save the model and label encoder
     build_pipeline(X_train, y_train)
 
 if __name__ == '__main__':
