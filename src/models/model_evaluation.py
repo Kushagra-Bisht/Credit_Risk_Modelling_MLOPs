@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 from mlflow.models.signature import infer_signature
 import json
+import os
 
 # Initialize DAGsHub and MLflow
 dagshub_token = "10a7c2f7d30e69f138e738ca411a1fbd78583d48"
